@@ -17,6 +17,8 @@ const {
   Lambda,
   Var,
   Join,
+  Call,
+  Function: Fn,
   Ref,
 } = faunadb.query;
 
@@ -62,7 +64,7 @@ app.post("/ingredient", async (req, res) => {
   // user: Select("ref", Get(Match(Index("users_by_name"), "username"))),
   // (very similar to join)
   const data = {
-    meal: Select("ref", Get(Match(Index("meal_by_name"), "lasagne"))),
+    meal: Call(Fn("getMeal"), "lasagne"),
     name: "tomato",
     price: 0.3,
   };
@@ -119,10 +121,7 @@ app.post("/ingredient", async (req, res) => {
 app.get("/ingredient", async (req, res) => {
   const docs = await client.query(
     Paginate(
-      Match(
-        Index("ingredients_by_meal"),
-        Select("ref", Get(Match(Index("meal_by_name"), "lasagne")))
-      )
+      Match(Index("ingredients_by_meal"), Call(Fn("getMeal"), "lasagne"))
     )
   );
   res.send(docs);
