@@ -31,3 +31,34 @@ Documentation about learnings while finishing the project.
   }
 }
 ```
+
+- This reference can be used to save it in documents of other collections
+- For accessing data you can upload a graphql schema to fauna and it will automatically create the collections and indexes to retrieve the data
+
+## FQL
+
+- Fauna also owns a custom query language called FQL (fauna query language) which can be installed in local shell or be used on the fauna.com shell online
+- FQL is functional and flexible
+- Reading a single document is as easy as
+
+```
+Get(
+  Ref(Collection("meals"), "283010324538327559")
+)
+```
+
+- Hovering over the `i` symbol in the shell will tell how many bytes where transfered
+- Seaching an index is as easy as
+
+```
+Get(
+  Match(Index("meal_by_name"), "lasagne")
+)
+```
+
+## Index
+
+- An `Index` can be used to defined how to query data from a collection. A user for example could be fetched by username or email instead of document/ref id.
+- The index can be named for example `meal_by_name`
+- A or many `Term(s)` can be used to define what keys in the collection should be searched for. In this case it is `data.name`
+- You can also state `Values` that should be returned so the index can be searched by the name of the meal but returns the price
