@@ -126,3 +126,25 @@ app.get("/ingredient", async (req, res) => {
   );
   res.send(docs);
 });
+
+// example response
+/* 
+{
+    "data": [
+        "onion",
+        "tomato"
+    ]
+}
+*/
+
+// endpoint for POST a relationship
+// not finished need to create another lambda function for ingredients
+app.post("/relationship", async (req, res) => {
+  const data = {
+    meal: Call(Fn("getMeal"), "lasagne"),
+    /* ingredient, */
+  };
+
+  const docs = await client.query(Create(Collection("relationship"), { data }));
+  res.send(docs);
+});
