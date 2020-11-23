@@ -62,3 +62,15 @@ Get(
 - The index can be named for example `meal_by_name`
 - A or many `Term(s)` can be used to define what keys in the collection should be searched for. In this case it is `data.name`
 - You can also state `Values` that should be returned so the index can be searched by the name of the meal but returns the price
+
+## Functions
+
+- In the code often you have to repeat yourself (Select Get Match Index) while getting basic resources like a user. Thus there is functions which allows lambda functions to outsource repeating code
+
+```
+This DRY code smell:
+Select("ref", Get(Match(Index("meal_by_name"), "lasagne")))
+
+becomes this lambda function:
+Query(Lambda("meal", Select("ref", Get(Match(Index("meal_by_name"), Var("meal"))))))
+```
