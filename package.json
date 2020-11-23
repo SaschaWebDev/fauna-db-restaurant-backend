@@ -1,0 +1,24 @@
+{
+  "name": "fauna-db-restaurant-backend",
+  "version": "1.0.0",
+  "description": "A small backend project to test out faunaDB which claims to combine the best features out of relational and noSQL databases.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaschaWebDev/fauna-db-restaurant-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaschaWebDev/fauna-db-restaurant-backend/issues"
+  },
+  "homepage": "https://github.com/SaschaWebDev/fauna-db-restaurant-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "faunadb": "^4.0.0"
+  }
+}
